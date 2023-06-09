@@ -48,7 +48,7 @@ async function gravarRegistros(paginas) {
       .then((dados) => {
         //console.log(dados)
         for (let i = 0; i < dados.records.length; i++) {
-          console.log(dados.records[i])
+          //console.log(dados.records[i])
           objetoDados.push(dados.records[i]);
         }
         teste++;
