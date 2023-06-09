@@ -34,7 +34,5 @@ function getDouble(){
     });
 
     req.end();
-
-    return result
 }
 app.listen(process.env.PORT || 3000)
