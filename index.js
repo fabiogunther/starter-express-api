@@ -7,8 +7,8 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', async (req, res) => {
-    let result = await buscarPagina()
-    res.send(result)
+    await buscarPagina()
+    //res.send(result)
 })
 
 const urlPrincipal =
@@ -27,7 +27,7 @@ async function buscarPagina() {
     .then((resposta) => resposta.json())
     .then((dados) => {
       totalPaginas = dados.total_pages;
-      //console.log(totalPaginas);
+      console.log(totalPaginas);
       gravarRegistros(totalPaginas);
     })
     .catch((erro) => {
@@ -57,7 +57,7 @@ async function gravarRegistros(paginas) {
         console.error("Erro ao obter dados", erro);
       });
   }
-  return objetoDados;
+  //return objetoDados;
 }
 
 async function imprimir(pag) {
