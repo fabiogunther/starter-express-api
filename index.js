@@ -7,8 +7,7 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', (req, res) => {
-    getDouble()
-    res.send('Yo!')
+    res.send(getDouble())
 })
 
 function getDouble(){
@@ -33,5 +32,7 @@ function getDouble(){
     });
 
     req.end();
+
+    return result
 }
 app.listen(process.env.PORT || 3000)
