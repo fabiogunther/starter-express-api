@@ -37,7 +37,7 @@ async function buscarPagina() {
 
 async function gravarRegistros(paginas) {
   let url =
-    "https://blaze.com/api/roulette_games/history?startDate=2023-04-29T21:15:26.099Z&endDate=2023-05-09T21:15:26.099Z&page=";
+    "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T23:59:59.999Z&page=";
 
   let teste = 0;
   for (let paginaAtual = 1; paginaAtual <= paginas; paginaAtual++) {
