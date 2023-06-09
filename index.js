@@ -1,5 +1,5 @@
 const express = require('express')
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express()
 app.all('/', (req, res) => {
     console.log("Just got a request!")
@@ -7,7 +7,7 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', async (req, res) => {
-    await buscarPagina();
+    await gravarRegistros(1)
 })
 
 const urlPrincipal =
@@ -45,6 +45,7 @@ async function gravarRegistros(paginas) {
     fetch(urlCustomizada)
       .then((resposta) => resposta.json())
       .then((dados) => {
+        console.log(dados)
         for (let i = 0; i < dados.records.length; i++) {
           objetoDados.push(dados.records[i]);
         }
