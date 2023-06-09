@@ -7,11 +7,11 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', (req, res) => {
-    getDouble()
+    res.send(getDouble())
 })
 
 function getDouble(){
-    const url = 'https://blaze.com/api/roulette_games/history?startDate=2023-05-10T12:08:43.084Z&endDate=2023-06-09T12:08:43.084Z&page=1';
+    const url = 'https://blaze.com/api/roulette_games/history?startDate=2023-05-10T12:08:43.084Z&endDate=2023-06-10T12:00:43.084Z&page=1';
 
     let result = '';
     const req = http.request(url, (res) => {
@@ -33,6 +33,6 @@ function getDouble(){
 
     req.end();
 
-    res.send(result)
+    return result
 }
 app.listen(process.env.PORT || 3000)
