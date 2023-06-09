@@ -7,7 +7,9 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', (req, res) => {
-    res.send(getDouble())
+    let test = getDouble()
+    console.log(test)
+    res.send(test)
 })
 
 function getDouble(){
