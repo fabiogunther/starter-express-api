@@ -7,11 +7,11 @@ app.all('/', (req, res) => {
 })
 
 app.all('/getDouble/', async (req, res) => {
-    await gravarRegistros(1)
+    await buscarPagina()
 })
 
 const urlPrincipal =
-  "https://blaze.com/api/roulette_games/history?startDate=2023-04-09T21:15:26.099Z&endDate=2023-05-09T21:15:26.099Z&page=1";
+  "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T23:59:59.999Z&page=1";
 
 let objetoDados = [];
 let totalPaginas = 0;
@@ -45,7 +45,7 @@ async function gravarRegistros(paginas) {
     fetch(urlCustomizada)
       .then((resposta) => resposta.json())
       .then((dados) => {
-        console.log(dados)
+        //console.log(dados)
         for (let i = 0; i < dados.records.length; i++) {
           objetoDados.push(dados.records[i]);
         }
