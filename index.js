@@ -1,37 +1,63 @@
 const express = require('express')
-const http = require("https");
+const fetch = require('node-fetch');
 const app = express()
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
 })
 
-app.all('/getDouble/', (req, res) => {
-    getDouble()    
-    res.send('test')
+app.all('/getDouble/', async (req, res) => {
+    await buscarPagina();
 })
 
-function getDouble(){
-    const url = 'https://blaze.com/api/roulette_games/history?startDate=2023-05-10T12:08:43.084Z&endDate=2023-06-10T12:00:43.084Z&page=1';
+const urlPrincipal =
+  "https://blaze.com/api/roulette_games/history?startDate=2023-04-09T21:15:26.099Z&endDate=2023-05-09T21:15:26.099Z&page=1";
 
-    let result = '';
-    const req = http.request(url, (res) => {
-        console.log(res.statusCode);
+let objetoDados = [];
+let totalPaginas = 0;
 
-        res.setEncoding('utf8');
-        res.on('data', (chunk) => {
-            result += chunk;
-        });
 
-        res.on('end', () => {
-            console.log(result);
-        });
+// await gravarRegistros(qtdPaginas);
+// await imprimir();
+
+// utilizado para buscar o total de páginas
+async function buscarPagina() {
+  fetch(urlPrincipal)
+    .then((resposta) => resposta.json())
+    .then((dados) => {
+      totalPaginas = dados.total_pages;
+      //console.log(totalPaginas);
+      gravarRegistros(totalPaginas);
+    })
+    .catch((erro) => {
+      console.error("Erro ao obter dados", erro);
     });
+}
 
-    req.on('error', (e) => {
-        console.error(e);
-    });
+async function gravarRegistros(paginas) {
+  let url =
+    "https://blaze.com/api/roulette_games/history?startDate=2023-04-29T21:15:26.099Z&endDate=2023-05-09T21:15:26.099Z&page=";
 
-    req.end();
+  let teste = 0;
+  for (let paginaAtual = 1; paginaAtual <= paginas; paginaAtual++) {
+    let urlCustomizada = url + paginaAtual;
+
+    fetch(urlCustomizada)
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        for (let i = 0; i < dados.records.length; i++) {
+          objetoDados.push(dados.records[i]);
+        }
+        teste++;
+        imprimir(teste);
+      })
+      .catch((erro) => {
+        console.error("Erro ao obter dados", erro);
+      });
+  }
+}
+
+async function imprimir(pag) {
+  console.log(pag);
 }
 app.listen(process.env.PORT || 3000)
