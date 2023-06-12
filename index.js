@@ -73,7 +73,7 @@ app.get("/", (req, res) => {
 });
 
 app.all('/getDouble/', async (req, res) => {
-  await buscarPagina()
+  await gravarRegistros(1)
   //res.send(result)
 })
 
