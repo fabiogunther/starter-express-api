@@ -128,7 +128,7 @@ for (let paginaAtual = 1; paginaAtual <= paginas; paginaAtual++) {
 }
 
 async function imprimir(pag) {
-  onsole.log(pag);
+  console.log(pag);
 }
 
 
