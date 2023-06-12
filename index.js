@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 app.all('/getDouble/', async (req, res) => {
   let ret = await gravarRegistros(1)
-  res.status(200).json({ error: 'FALSE', msg: ret });
+  res.status(200).json({ error: 'FALSE', ret });
 })
 
 const urlPrincipal =
@@ -41,7 +41,7 @@ fetch(urlPrincipal)
 
 async function gravarRegistros(paginas) {
   let url =
-    "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T00:59:59.999Z&page=";
+    "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T00:09:59.999Z&page=";
 
   let teste = 0;
   for (let paginaAtual = 1; paginaAtual <= paginas; paginaAtual++) {
@@ -52,7 +52,7 @@ async function gravarRegistros(paginas) {
       .then((dados) => {
         //console.log(dados)
         for (let i = 0; i < dados.records.length; i++) {
-          //console.log(dados.records[i])
+          console.log(dados.records[i])
           objetoDados.push(dados.records[i]);
         }
         teste++;
