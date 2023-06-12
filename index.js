@@ -17,7 +17,7 @@ app.all('/getDouble/', (req, res) => {
 
 async function buscarNextsLeap() {
   let urlPrincipal = 'https://lb.1x2networkhubmalta.com/f1x2games//virtualsport_fralis/getRacesDetailedJSON.jsp?sport_id=3&num_forward=20&install_id=1&siteID=4500'
-  fetch(urlPrincipal)
+  await fetch(urlPrincipal)
     .then((resposta) => resposta.json())
     .then((dados) => {
       //totalPaginas = dados.total_pages;
