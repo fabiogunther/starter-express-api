@@ -112,11 +112,11 @@ for (let paginaAtual = 1; paginaAtual <= paginas; paginaAtual++) {
   fetch(urlCustomizada)
     .then((resposta) => resposta.json())
     .then((dados) => {
-      //console.log(dados)
-      for (let i = 0; i < dados.records.length; i++) {
+      console.log(dados)
+      /*for (let i = 0; i < dados.records.length; i++) {
         //console.log(dados.records[i])
         objetoDados.push(dados.records[i]);
-      }
+      }*/
       teste++;
       imprimir(teste);
     })
