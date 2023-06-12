@@ -1,4 +1,4 @@
-const express = require('express')
+/*const express = require('express')
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express()
 app.all('/', (req, res) => {
@@ -65,3 +65,14 @@ async function imprimir(pag) {
   console.log(pag);
 }
 app.listen(process.env.PORT || 3000)
+*/
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
+});
+app.listen(5000, () => {
+  console.log("Running on port 5000.");
+});
+// Export the Express API
+module.exports = app;
