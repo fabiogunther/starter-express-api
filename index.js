@@ -18,7 +18,7 @@ app.all('/getDouble/', async (req, res) => {
 const urlPrincipal =
 "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T00:59:59.999Z&page=1";
 
-let objetoDados = [];
+
 let totalPaginas = 0;
 
 
@@ -40,6 +40,7 @@ fetch(urlPrincipal)
 }
 
 async function gravarRegistros(paginas) {
+  let objetoDados = [];
   let url =
     "https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T00:09:59.999Z&page=";
 
@@ -56,7 +57,7 @@ async function gravarRegistros(paginas) {
           objetoDados.push(dados.records[i]);
         }
         teste++;
-        imprimir(teste);
+        //imprimir(teste);
       })
       .catch((erro) => {
         console.error("Erro ao obter dados", erro);
