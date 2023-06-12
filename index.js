@@ -10,8 +10,8 @@ app.get("/", (req, res) => {
   res.status(200).json({ error: 'FALSE', msg: "Bem vindo a API 2.0!" });
 });
 
-app.all('/getDouble/', async (req, res) => {
-  let ret = await buscarNextsLeap()
+app.all('/getDouble/', (req, res) => {
+  let ret = buscarNextsLeap()
   res.status(200).json({ error: 'FALSE', ret });
 })
 
