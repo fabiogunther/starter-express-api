@@ -78,7 +78,7 @@ app.all('/getDouble/', async (req, res) => {
 })
 
 const urlPrincipal =
-"https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T23:59:59.999Z&page=1";
+"https://blaze.com/api/roulette_games/history?startDate=2023-05-09T00:00:00.000Z&endDate=2023-05-09T00:59:59.999Z&page=1";
 
 let objetoDados = [];
 let totalPaginas = 0;
