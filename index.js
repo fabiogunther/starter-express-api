@@ -77,7 +77,6 @@ app.get("/speedway/1xbet/lasts/:qtd", async (req, res) => {
 
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
-const port = process.env.PORT || 5000;
 
 mongoose.connect(
     `mongodb+srv://${dbUser}:${dbPassword}@cluster0.euobd.mongodb.net/?retryWrites=true&w=majority`
