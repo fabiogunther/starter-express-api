@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	next();
-);
+});
 
 app.get("/", (req, res) => {
   	res.status(200).json({ error: 'FALSE', msg: "Bem vindo a API 2.0!" });
